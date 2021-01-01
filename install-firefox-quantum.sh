@@ -36,6 +36,11 @@ INSTALL_PATH=$INSTALL_DIR/firefox-quantum-$EDITION
 
 # Download & install Firefox Quantum
 wget $TAR_URL -O firefox-quantum-$EDITION.tar.bz2
+wgetCode=$?
+if [ $wgetCode -ne 0 ]; then
+    echo "Error while downloading Firefox. Check if the language code and Firefox edition You provided are correct!"
+    exit $wgetCode
+fi
 sudo mkdir -p $INSTALL_PATH
 sudo tar --strip-components=1 -xjvf firefox-quantum-$EDITION.tar.bz2 -C $INSTALL_PATH
 rm -f firefox-quantum-$EDITION.tar.bz2
@@ -70,7 +75,7 @@ Name[nb]=Firefox Quantum Nettleser
 Name[nl]=Firefox Quantum webbrowser
 Name[nn]=Firefox Quantum Nettlesar
 Name[no]=Firefox Quantum Nettleser
-Name[pl]=Przeglądarka WWW Firefox Quantum
+Name[pl]=Firefox Quantum
 Name[pt]=Firefox Quantum Navegador Web
 Name[pt_BR]=Navegador Web Firefox Quantum
 Name[ro]=Firefox Quantum – Navigator Internet
